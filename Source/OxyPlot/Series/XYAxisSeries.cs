@@ -147,7 +147,9 @@ namespace OxyPlot.Series
         /// <returns>A screen point.</returns>
         public ScreenPoint Transform(DataPoint p)
         {
-            return this.XAxis.Transform(p.X, p.Y, this.YAxis);
+            var sp = this.XAxis.Transform(p.X, p.Y, this.YAxis);
+            sp.MarkerColour = p.MarkerColour;
+            return sp;
         }
 
         /// <summary>

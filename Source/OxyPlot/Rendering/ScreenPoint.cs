@@ -9,6 +9,7 @@
 
 namespace OxyPlot
 {
+    using OxyPlot.Foundation;
     using System;
     using System.Diagnostics.CodeAnalysis;
 
@@ -37,6 +38,13 @@ namespace OxyPlot
         // ReSharper disable once InconsistentNaming
         internal double y;
 
+
+        /// <summary>
+        /// The style of the marker
+        /// </summary>
+        /// <value>MarkerStyle enum</value>
+        public MarkerStyle MarkerColour;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ScreenPoint" /> struct.
         /// </summary>
@@ -46,6 +54,7 @@ namespace OxyPlot
         {
             this.x = x;
             this.y = y;
+            this.MarkerColour = MarkerStyle.Style1;
         }
 
         /// <summary>

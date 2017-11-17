@@ -9,6 +9,7 @@
 
 namespace OxyPlot
 {
+    using OxyPlot.Foundation;
     using System;
     using System.Diagnostics.CodeAnalysis;
 
@@ -46,6 +47,7 @@ namespace OxyPlot
         {
             this.x = x;
             this.y = y;
+            this.MarkerColour = MarkerStyle.Style1;
         }
 
         /// <summary>
@@ -71,6 +73,12 @@ namespace OxyPlot
                 return this.y;
             }
         }
+
+        /// <summary>
+        /// The style of the marker
+        /// </summary>
+        /// <value>MarkerStyle enum</value>
+        public MarkerStyle MarkerColour;
 
         /// <summary>
         /// Returns C# code that generates this instance.
@@ -115,5 +123,6 @@ namespace OxyPlot
             // ReSharper restore EqualExpressionComparison
 #pragma warning restore 1718
         }
+
     }
 }

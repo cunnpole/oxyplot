@@ -612,7 +612,7 @@ namespace OxyPlot.Series
             {
                 index++;
 
-                if (!this.IsValidPoint(point))
+                if (!this.IsValidPoint(point) || !point.ShowLabel)
                 {
                     continue;
                 }

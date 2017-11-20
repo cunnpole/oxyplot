@@ -48,6 +48,7 @@ namespace OxyPlot
             this.x = x;
             this.y = y;
             this.MarkerColour = MarkerStyle.Style1;
+            this.ShowLabel = true;
         }
 
         /// <summary>
@@ -73,6 +74,8 @@ namespace OxyPlot
                 return this.y;
             }
         }
+
+        public bool ShowLabel;
 
         /// <summary>
         /// The style of the marker

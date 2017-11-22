@@ -43,7 +43,7 @@ namespace OxyPlot
         /// The style of the marker
         /// </summary>
         /// <value>MarkerStyle enum</value>
-        public MarkerStyle MarkerColour;
+        public MarkerColor MarkerColour;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ScreenPoint" /> struct.
@@ -54,7 +54,7 @@ namespace OxyPlot
         {
             this.x = x;
             this.y = y;
-            this.MarkerColour = MarkerStyle.Style1;
+            this.MarkerColour = MarkerColor.Color1;
         }
 
         /// <summary>

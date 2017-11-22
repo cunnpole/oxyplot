@@ -249,19 +249,19 @@ namespace OxyPlot.Series
                 {
                     switch(g.Key)
                     {
-                        case Foundation.MarkerStyle.Style1:
+                        case Foundation.MarkerColor.Color1:
                             rc.DrawMarkers(clippingRect, g.ToList(), this.MarkerType, this.MarkerOutline, new[] { this.MarkerSize }, this.ActualMarkerFill, this.MarkerStroke, this.MarkerStrokeThickness, this.MarkerResolution, markerBinOffset);
                             break;
-                        case Foundation.MarkerStyle.Style2:
+                        case Foundation.MarkerColor.Color2:
                             rc.DrawMarkers(clippingRect, g.ToList(), this.MarkerType, this.MarkerOutline, new[] { this.MarkerSize }, this.ActualMarkerFill2, this.MarkerStroke2, this.MarkerStrokeThickness, this.MarkerResolution, markerBinOffset);
                             break;
-                        case Foundation.MarkerStyle.Style3:
+                        case Foundation.MarkerColor.Color3:
                             rc.DrawMarkers(clippingRect, g.ToList(), this.MarkerType, this.MarkerOutline, new[] { this.MarkerSize }, this.ActualMarkerFill3, this.MarkerStroke3, this.MarkerStrokeThickness, this.MarkerResolution, markerBinOffset);
                             break;
-                        case Foundation.MarkerStyle.Style4:
+                        case Foundation.MarkerColor.Color4:
                             rc.DrawMarkers(clippingRect, g.ToList(), this.MarkerType, this.MarkerOutline, new[] { this.MarkerSize }, this.ActualMarkerFill4, this.MarkerStroke4, this.MarkerStrokeThickness, this.MarkerResolution, markerBinOffset);
                             break;
-                        case Foundation.MarkerStyle.Style5:
+                        case Foundation.MarkerColor.Color5:
                             rc.DrawMarkers(clippingRect, g.ToList(), this.MarkerType, this.MarkerOutline, new[] { this.MarkerSize }, this.ActualMarkerFill5, this.MarkerStroke5, this.MarkerStrokeThickness, this.MarkerResolution, markerBinOffset);
                             break;
 

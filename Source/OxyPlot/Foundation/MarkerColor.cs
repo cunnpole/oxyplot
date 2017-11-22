@@ -4,12 +4,12 @@ using System.Text;
 
 namespace OxyPlot.Foundation
 {
-    public enum MarkerStyle
+    public enum MarkerColor
     {
-        Style1,
-        Style2,
-        Style3,
-        Style4, 
-        Style5
+        Color1,
+        Color2,
+        Color3,
+        Color4, 
+        Color5
     }
 }

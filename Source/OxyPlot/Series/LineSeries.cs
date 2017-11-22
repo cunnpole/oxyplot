@@ -617,7 +617,8 @@ namespace OxyPlot.Series
                     continue;
                 }
 
-                var pt = this.Transform(point) + new ScreenVector(0, -this.LabelMargin);
+                var pt = this.Transform(point);
+                pt += new ScreenVector(0, clippingRect.Height / 2 > pt.Y ? this.LabelMargin : -this.LabelMargin);
 
                 if (!clippingRect.Contains(pt))
                 {
@@ -659,7 +660,7 @@ namespace OxyPlot.Series
                     this.ActualFontWeight,
                     0,
                     HorizontalAlignment.Center,
-                    VerticalAlignment.Bottom);
+                    clippingRect.Height / 2 > pt.Y ? VerticalAlignment.Top : VerticalAlignment.Bottom);
             }
         }
 

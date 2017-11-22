@@ -47,7 +47,7 @@ namespace OxyPlot
         {
             this.x = x;
             this.y = y;
-            this.MarkerColour = MarkerStyle.Style1;
+            this.MarkerColour = MarkerColor.Color1;
             this.ShowLabel = true;
         }
 
@@ -81,7 +81,7 @@ namespace OxyPlot
         /// The style of the marker
         /// </summary>
         /// <value>MarkerStyle enum</value>
-        public MarkerStyle MarkerColour;
+        public MarkerColor MarkerColour;
 
         /// <summary>
         /// Returns C# code that generates this instance.

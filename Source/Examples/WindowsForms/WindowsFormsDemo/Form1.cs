@@ -33,15 +33,15 @@ namespace WindowsFormsDemo
                 BrokenLineThickness = 1,
             };
             goalSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2016, 1, 1)), 130));
-            goalSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2018, 1, 1)), 130));
+            goalSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2018, 1, 1)) + 20, 130));
 
             PlotModel PlotModel = new PlotModel { Title = null, Subtitle = null, };
 
             PlotModel.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom, IsAxisVisible = true,
                 FontSize = 10, MajorStep = 182, StringFormat="MMM yy",
                 MajorTickSize = 5,
-                MinorTickSize = 2, MinorStep = 182, Maximum = DateTimeAxis.ToDouble(new DateTime(2018, 1, 1))+20.0, Minimum = DateTimeAxis.ToDouble(new DateTime(2016, 1, 1)) });
-            PlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, AxisDistance=60, StringFormat="000", IsAxisVisible = true, FontSize = 10, MajorStep =10, MinorStep=10, Maximum=151, Minimum=100});
+                MinorTickSize = 2, MinorStep = 182, Maximum = DateTimeAxis.ToDouble(new DateTime(2018, 1, 1))+20, Minimum = DateTimeAxis.ToDouble(new DateTime(2016, 1, 1)) });
+            PlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, StringFormat="000", IsAxisVisible = true, FontSize = 10, MajorStep =10, MinorStep=10, Maximum=160, Minimum=100});
             PlotModel.Series.Add(goalSeries);
 
             var lineSeries = new FiveColorLineSeries
@@ -67,11 +67,6 @@ namespace WindowsFormsDemo
                 ShowColouredLines = true,
                 ColorLo = OxyColors.Green,
                 ColorLo2 = OxyColors.Green,
-                MiddleText = "Good",
-        //        LoText = "Borderline",
-       //         Lo2Text = "Poor",
-                HiText = "Borderline",
-                Hi2Text = "At Risk",
             };
             int i = 0;
             lineSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2016,1,1).AddDays(18*i++)), 130) { MarkerColour = OxyPlot.Foundation.MarkerColor.Color2, ShowLabel = false });
@@ -110,7 +105,7 @@ namespace WindowsFormsDemo
             lineSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2016,1,1).AddDays(18*i++)), 124) { MarkerColour = OxyPlot.Foundation.MarkerColor.Color2, ShowLabel = false });
             lineSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2016,1,1).AddDays(18*i++)), 122) { MarkerColour = OxyPlot.Foundation.MarkerColor.Color2, ShowLabel = false });
             lineSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2016,1,1).AddDays(18*i++)), 126) { MarkerColour = OxyPlot.Foundation.MarkerColor.Color2, ShowLabel = false });
-            lineSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2016,1,1).AddDays(18*i++)), 146) { MarkerColour = OxyPlot.Foundation.MarkerColor.Color2, ShowLabel = false });
+            lineSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2016,1,1).AddDays(18*i++)), 155) { MarkerColour = OxyPlot.Foundation.MarkerColor.Color2, ShowLabel = false });
             lineSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2016,1,1).AddDays(18*i++)), 120) { MarkerColour = OxyPlot.Foundation.MarkerColor.Color2, ShowLabel = false });
             lineSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2016,1,1).AddDays(18*i++)), 128) { MarkerColour = OxyPlot.Foundation.MarkerColor.Color2, ShowLabel = false });
             lineSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2016,1,1).AddDays(18*i++)), 131) { MarkerColour = OxyPlot.Foundation.MarkerColor.Color2, ShowLabel = false });

@@ -38,6 +38,7 @@ namespace WindowsFormsDemo
         {
             this.plot1 = new OxyPlot.WindowsForms.PlotView();
             this.cmdRedraw = new System.Windows.Forms.Button();
+            this.cmdBloodGlucose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // plot1
@@ -49,7 +50,7 @@ namespace WindowsFormsDemo
             this.plot1.Margin = new System.Windows.Forms.Padding(0);
             this.plot1.Name = "plot1";
             this.plot1.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plot1.Size = new System.Drawing.Size(350, 92);
+            this.plot1.Size = new System.Drawing.Size(502, 168);
             this.plot1.TabIndex = 0;
             this.plot1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
             this.plot1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
@@ -58,7 +59,7 @@ namespace WindowsFormsDemo
             // cmdRedraw
             // 
             this.cmdRedraw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdRedraw.Location = new System.Drawing.Point(181, 95);
+            this.cmdRedraw.Location = new System.Drawing.Point(333, 171);
             this.cmdRedraw.Name = "cmdRedraw";
             this.cmdRedraw.Size = new System.Drawing.Size(167, 23);
             this.cmdRedraw.TabIndex = 1;
@@ -66,11 +67,23 @@ namespace WindowsFormsDemo
             this.cmdRedraw.UseVisualStyleBackColor = true;
             this.cmdRedraw.Click += new System.EventHandler(this.cmdRedraw_Click);
             // 
+            // cmdBloodGlucose
+            // 
+            this.cmdBloodGlucose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdBloodGlucose.Location = new System.Drawing.Point(160, 171);
+            this.cmdBloodGlucose.Name = "cmdBloodGlucose";
+            this.cmdBloodGlucose.Size = new System.Drawing.Size(167, 23);
+            this.cmdBloodGlucose.TabIndex = 2;
+            this.cmdBloodGlucose.Text = "Blood Glucose";
+            this.cmdBloodGlucose.UseVisualStyleBackColor = true;
+            this.cmdBloodGlucose.Click += new System.EventHandler(this.cmdBloodGlucose_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 120);
+            this.ClientSize = new System.Drawing.Size(502, 196);
+            this.Controls.Add(this.cmdBloodGlucose);
             this.Controls.Add(this.cmdRedraw);
             this.Controls.Add(this.plot1);
             this.Name = "Form1";
@@ -85,5 +98,6 @@ namespace WindowsFormsDemo
 
         private PlotView plot1;
         private System.Windows.Forms.Button cmdRedraw;
+        private System.Windows.Forms.Button cmdBloodGlucose;
     }
 }

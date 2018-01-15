@@ -56,6 +56,7 @@ namespace OxyPlot.Series
             this.ColorHi2 = OxyColors.Red;
             this.LineStyleHi2 = LineStyle.Solid;
             this.ShowColouredLines = true;
+            this.DefaultLineColor = OxyColors.Black;
             this.SectionBackColorAlpha = 255;
         }
 
@@ -287,6 +288,7 @@ namespace OxyPlot.Series
         public byte SectionBackColorAlpha { get; set; }
         public bool ShowColouredLines { get; set; }
 
+        public OxyColor DefaultLineColor{get; set;}
 
         public string MiddleText { get; set; }
         public string LoText { get; set; }
@@ -399,27 +401,27 @@ namespace OxyPlot.Series
             {
                 yHi2 = clippingRect.Bottom;
             }
-
-            var black = OxyColors.Black;
+            
             var hasText = String.IsNullOrWhiteSpace(MiddleText) || String.IsNullOrWhiteSpace(LoText) || String.IsNullOrWhiteSpace(Lo2Text) || String.IsNullOrWhiteSpace(HiText) || String.IsNullOrWhiteSpace(Hi2Text);
             //middle bit
+            
+            clippingRect = new OxyRect(clippingRect.Left, yHi, clippingRect.Width, yLo - yHi);
+            if (SectionBackColorAlpha > 0)
+            {
+                var clippy = !hasText ? clippingRect : OxyRect.Create(clippingRect.Left - this.YAxis.AxisDistance, clippingRect.Top, clippingRect.Right, clippingRect.Bottom);
+                var sectionBackColor = SectionBackColorAlpha < 255 ? OxyColor.FromAColor(SectionBackColorAlpha, this.GetSelectableColor(this.ActualColor)) : this.GetSelectableColor(this.ActualColor);
+                rc.DrawClippedRectangle(clippy, clippy, sectionBackColor, sectionBackColor, 0);
+                if (!String.IsNullOrWhiteSpace(MiddleText))
+                    rc.DrawText(new ScreenPoint(clippy.Left + 3, clippy.Center.Y), MiddleText, this.GetSelectableColor(this.ActualColor), Font, FontSize, FontWeight, 0, HorizontalAlignment.Left, VerticalAlignment.Middle);
+
+            }
             if (pointsToRender.Any(x => x.Y < yLo && x.Y > yHi))
             {
-                clippingRect = new OxyRect(clippingRect.Left, yHi, clippingRect.Width, yLo - yHi);
-                if (SectionBackColorAlpha > 0)
-                {
-                    var clippy = !hasText ? clippingRect : OxyRect.Create(clippingRect.Left - this.YAxis.AxisDistance, clippingRect.Top, clippingRect.Right, clippingRect.Bottom);
-                    var sectionBackColor = SectionBackColorAlpha < 255 ? OxyColor.FromAColor(SectionBackColorAlpha, this.GetSelectableColor(this.ActualColor)) : this.GetSelectableColor(this.ActualColor);
-                    rc.DrawClippedRectangle(clippy, clippy, sectionBackColor, sectionBackColor, 0);
-                    if (!String.IsNullOrWhiteSpace(MiddleText))
-                        rc.DrawText(new ScreenPoint(clippy.Left + 3, clippy.Center.Y), MiddleText, this.GetSelectableColor(this.ActualColor), Font, FontSize, FontWeight, 0, HorizontalAlignment.Left, VerticalAlignment.Middle);
-
-                }
                 rc.DrawClippedLine(
                     clippingRect,
                     pointsToRender,
                     this.MinimumSegmentLength * this.MinimumSegmentLength,
-                    ShowColouredLines ? this.GetSelectableColor(this.ActualColor) : black,
+                    ShowColouredLines ? this.GetSelectableColor(this.ActualColor) : DefaultLineColor,
                     this.StrokeThickness,
                     this.ActualDashArray,
                     this.LineJoin,
@@ -442,7 +444,7 @@ namespace OxyPlot.Series
                     clippingRect,
                     pointsToRender,
                     this.MinimumSegmentLength * this.MinimumSegmentLength,
-                    ShowColouredLines ? this.GetSelectableColor(this.ActualColorLo) : black,
+                    ShowColouredLines ? this.GetSelectableColor(this.ActualColorLo) : DefaultLineColor,
                     this.StrokeThickness,
                     this.ActualDashArrayLo,
                     this.LineJoin,
@@ -465,7 +467,7 @@ namespace OxyPlot.Series
                     clippingRect,
                     pointsToRender,
                     this.MinimumSegmentLength * this.MinimumSegmentLength,
-                    ShowColouredLines ? this.GetSelectableColor(this.ActualColorLo2) : black,
+                    ShowColouredLines ? this.GetSelectableColor(this.ActualColorLo2) : DefaultLineColor,
                     this.StrokeThickness,
                     this.ActualDashArrayLo2,
                     this.LineJoin,
@@ -488,7 +490,7 @@ namespace OxyPlot.Series
                    clippingRect,
                    pointsToRender,
                    this.MinimumSegmentLength * this.MinimumSegmentLength,
-                   ShowColouredLines ? this.GetSelectableColor(this.ActualColorHi) : black,
+                   ShowColouredLines ? this.GetSelectableColor(this.ActualColorHi) : DefaultLineColor,
                    this.StrokeThickness,
                    this.ActualDashArrayHi,
                    this.LineJoin,
@@ -511,13 +513,36 @@ namespace OxyPlot.Series
                    clippingRect,
                    pointsToRender,
                    this.MinimumSegmentLength * this.MinimumSegmentLength,
-                   ShowColouredLines ? this.GetSelectableColor(this.ActualColorHi2) : black,
+                   ShowColouredLines ? this.GetSelectableColor(this.ActualColorHi2) : DefaultLineColor,
                    this.StrokeThickness,
                    this.ActualDashArrayHi2,
                    this.LineJoin,
                    false);
 
             }
+        }
+        /// <summary>
+        /// Renders the legend symbol for the line series on the
+        /// specified rendering context.
+        /// </summary>
+        /// <param name="rc">The rendering context.</param>
+        /// <param name="legendBox">The bounding rectangle of the legend box.</param>
+        public override void RenderLegend(IRenderContext rc, OxyRect legendBox)
+        {
+            double xmid = (legendBox.Left + legendBox.Right) / 2;
+            double ymid = (legendBox.Top + legendBox.Bottom) / 2;
+            var pts = new[] { new ScreenPoint(legendBox.Left, ymid), new ScreenPoint(legendBox.Right, ymid) };
+           
+            var midpt = new ScreenPoint(xmid, ymid);
+            rc.DrawMarker(
+                legendBox,
+                midpt,
+                this.MarkerType,
+                this.MarkerOutline,
+                this.MarkerSize,
+                this.ActualMarkerFill,
+                this.MarkerStroke,
+                this.MarkerStrokeThickness);
         }
     }
 }

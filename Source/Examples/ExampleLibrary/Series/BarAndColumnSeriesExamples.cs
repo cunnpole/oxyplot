@@ -120,7 +120,7 @@ namespace ExampleLibrary
             var plotModel1 = new PlotModel { LegendPlacement = LegendPlacement.Outside, Title = "Binding to ItemsSource" };
             var categoryAxis1 = new CategoryAxis { Position = CategoryAxisPosition(), LabelField = "Label", ItemsSource = items, MajorStep = 1, MinorStep = 1 };
             plotModel1.Axes.Add(categoryAxis1);
-            var linearAxis1 = new LinearAxis { Position = ValueAxisPosition(), AbsoluteMinimum = 0, MinimumPadding = 0 };
+            var linearAxis1 = new LinearAxis { Position = CategoryAxisPosition(), AbsoluteMinimum = 0, MinimumPadding = 0 };
             plotModel1.Axes.Add(linearAxis1);
             var series1 = new TSeries
             {

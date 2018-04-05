@@ -131,7 +131,15 @@ namespace OxyPlot.Series
         /// <summary>
         /// Gets or sets the label margins. The default is <c>6</c>.
         /// </summary>
-        public double LabelMargin { get; set; }
+        public double LabelMarginX { get; set; }
+        /// <summary>
+        /// Gets or sets the label margins. The default is <c>6</c>.
+        /// </summary>
+        public double LabelMarginY { get; set; }
+        /// <summary>
+        /// Gets or sets the label margins. The default is <c>6</c>.
+        /// </summary>
+        public double LabelMargin { get { return LabelMarginY; } set { LabelMarginY = value; } }
 
         /// <summary>
         /// Gets or sets the line join. The default is <see cref="OxyPlot.LineJoin.Bevel" />.
@@ -618,7 +626,8 @@ namespace OxyPlot.Series
                 }
 
                 var pt = this.Transform(point);
-                pt += new ScreenVector(0, clippingRect.Height / 2 > pt.Y ? this.LabelMargin : -this.LabelMargin);
+                pt += new ScreenVector(0, clippingRect.Height / 2 > pt.Y ? this.LabelMarginY : -this.LabelMarginY);
+                pt += new ScreenVector(clippingRect.Width / 2 > pt.X ? this.LabelMarginX : -this.LabelMarginX, 0);
 
                 if (!clippingRect.Contains(pt))
                 {

@@ -405,7 +405,7 @@ namespace OxyPlot.Series
             var hasText = String.IsNullOrWhiteSpace(MiddleText) || String.IsNullOrWhiteSpace(LoText) || String.IsNullOrWhiteSpace(Lo2Text) || String.IsNullOrWhiteSpace(HiText) || String.IsNullOrWhiteSpace(Hi2Text);
             //middle bit
             
-            clippingRect = new OxyRect(clippingRect.Left, yHi, clippingRect.Width, yLo - yHi);
+            clippingRect = new OxyRect(clippingRect.Left, yHi, clippingRect.Width, Math.Max(yLo - yHi,0));
             if (SectionBackColorAlpha > 0)
             {
                 var clippy = !hasText ? clippingRect : OxyRect.Create(clippingRect.Left - this.YAxis.AxisDistance, clippingRect.Top, clippingRect.Right, clippingRect.Bottom);
@@ -429,7 +429,7 @@ namespace OxyPlot.Series
             }
             //lower middle
 
-            clippingRect = new OxyRect(clippingRect.Left, yLo, clippingRect.Width, yLo2 - yLo);
+            clippingRect = new OxyRect(clippingRect.Left, yLo, clippingRect.Width, Math.Max(yLo2 - yLo, 0));
             if (SectionBackColorAlpha > 0)
             {
                 var clippy = !hasText ? clippingRect : OxyRect.Create(clippingRect.Left - this.YAxis.AxisDistance, clippingRect.Top, clippingRect.Right, clippingRect.Bottom);
@@ -452,7 +452,7 @@ namespace OxyPlot.Series
             }
             //lower outer
 
-            clippingRect = new OxyRect(clippingRect.Left, yLo2, clippingRect.Width, bottom - yLo2);
+            clippingRect = new OxyRect(clippingRect.Left, yLo2, clippingRect.Width, Math.Max(bottom - yLo2, 0));
             if (SectionBackColorAlpha > 0)
             {
                 var clippy = !hasText ? clippingRect : OxyRect.Create(clippingRect.Left - this.YAxis.AxisDistance, clippingRect.Top, clippingRect.Right, clippingRect.Bottom);
@@ -475,7 +475,7 @@ namespace OxyPlot.Series
             }
             //upper middle
 
-            clippingRect = new OxyRect(clippingRect.Left, yHi2, clippingRect.Width, yHi - yHi2);
+            clippingRect = new OxyRect(clippingRect.Left, yHi2, clippingRect.Width, Math.Max(yHi - yHi2, 0));
             if (SectionBackColorAlpha > 0)
             {
                 var clippy = !hasText ? clippingRect : OxyRect.Create(clippingRect.Left - this.YAxis.AxisDistance, clippingRect.Top, clippingRect.Right, clippingRect.Bottom);
@@ -498,7 +498,7 @@ namespace OxyPlot.Series
             }
             //upper outer
 
-            clippingRect = new OxyRect(clippingRect.Left, top, clippingRect.Width, yHi2 - top);
+            clippingRect = new OxyRect(clippingRect.Left, top, clippingRect.Width, Math.Max(yHi2 - top, 0));
             if (SectionBackColorAlpha > 0)
             {
                 var clippy = !hasText ? clippingRect : OxyRect.Create(clippingRect.Left - this.YAxis.AxisDistance, clippingRect.Top, clippingRect.Right, clippingRect.Bottom);

@@ -658,6 +658,9 @@ namespace OxyPlot.Series
                             break;
                     }
 #endif
+                var size = rc.MeasureText(s, ActualFont, ActualFontSize, ActualFontWeight);
+                var colour = OxyColor.FromArgb(200, 255, 255, 255);
+                rc.DrawClippedRectangle(clippingRect, new OxyRect(pt.x -2 - size.Width/2, pt.Y - size.Height -2, size.Width+4, size.Height+4), colour, colour, 1);
 
                 rc.DrawClippedText(
                     clippingRect,
@@ -670,7 +673,7 @@ namespace OxyPlot.Series
                     0,
                     HorizontalAlignment.Center,
                     clippingRect.Height / 2 > pt.Y ? VerticalAlignment.Top : VerticalAlignment.Bottom);
-            }
+                }
         }
 
         /// <summary>

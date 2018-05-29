@@ -415,7 +415,7 @@ namespace OxyPlot.Series
                     rc.DrawText(new ScreenPoint(clippy.Left + 3, clippy.Center.Y), MiddleText, this.GetSelectableColor(this.ActualColor), Font, FontSize, FontWeight, 0, HorizontalAlignment.Left, VerticalAlignment.Middle);
 
             }
-            if (pointsToRender.Any(x => x.Y < yLo && x.Y > yHi) || (pointsToRender.Any(x => x.Y < yHi) && pointsToRender.Any(x => x.Y > yLo)))
+            if (pointsToRender.Any(x => x.Y <= yLo && x.Y >= yHi) || (pointsToRender.Any(x => x.Y <= yHi) && pointsToRender.Any(x => x.Y >= yLo)))
             {
                 rc.DrawClippedLine(
                     clippingRect,
@@ -438,7 +438,7 @@ namespace OxyPlot.Series
                 var sectionBackColor = SectionBackColorAlpha < 255 ? OxyColor.FromAColor(SectionBackColorAlpha, this.GetSelectableColor(this.ActualColorLo)) : this.GetSelectableColor(this.ActualColorLo);
                 rc.DrawRectangle(clippy, sectionBackColor, sectionBackColor, 0);
             }
-            if (pointsToRender.Any(x => x.Y > yLo && x.Y < yLo2) || (pointsToRender.Any(x => x.Y < yLo) && pointsToRender.Any(x => x.Y > yLo2)))
+            if (pointsToRender.Any(x => x.Y >= yLo && x.Y <= yLo2) || (pointsToRender.Any(x => x.Y <= yLo) && pointsToRender.Any(x => x.Y >= yLo2)))
             {
                 rc.DrawClippedLine(
                     clippingRect,
@@ -461,7 +461,7 @@ namespace OxyPlot.Series
                 var sectionBackColor = SectionBackColorAlpha < 255 ? OxyColor.FromAColor(SectionBackColorAlpha, this.GetSelectableColor(this.ActualColorLo2)) : this.GetSelectableColor(this.ActualColorLo2);
                 rc.DrawRectangle(clippy, sectionBackColor, sectionBackColor, 0);
             }
-            if (pointsToRender.Any(x => x.Y > yLo2))
+            if (pointsToRender.Any(x => x.Y >= yLo2))
             {
                 rc.DrawClippedLine(
                     clippingRect,
@@ -484,7 +484,7 @@ namespace OxyPlot.Series
                 var sectionBackColor = SectionBackColorAlpha < 255 ? OxyColor.FromAColor(SectionBackColorAlpha, this.GetSelectableColor(this.ActualColorHi)) : this.GetSelectableColor(this.ActualColorHi);
                 rc.DrawRectangle(clippy, sectionBackColor, sectionBackColor, 0);
             }
-            if (pointsToRender.Any(x => x.Y < yHi && x.Y > yHi2))
+            if (pointsToRender.Any(x => x.Y <= yHi && x.Y >= yHi2))
             {
                 rc.DrawClippedLine(
                    clippingRect,
@@ -507,7 +507,7 @@ namespace OxyPlot.Series
                 var sectionBackColor = SectionBackColorAlpha < 255 ? OxyColor.FromAColor(SectionBackColorAlpha, this.GetSelectableColor(this.ActualColorHi2)) : this.GetSelectableColor(this.ActualColorHi2);
                 rc.DrawRectangle(clippy, sectionBackColor, sectionBackColor, 0);
             }
-            if (pointsToRender.Any(x => x.Y < yHi2))
+            if (pointsToRender.Any(x => x.Y <= yHi2))
             {
                 rc.DrawClippedLine(
                    clippingRect,

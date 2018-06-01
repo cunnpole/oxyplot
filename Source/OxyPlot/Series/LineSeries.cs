@@ -659,7 +659,7 @@ namespace OxyPlot.Series
                     }
 #endif
                 var size = rc.MeasureText(s, ActualFont, ActualFontSize, ActualFontWeight);
-                var colour = OxyColor.FromArgb(200, 255, 255, 255);
+                var colour = OxyColor.FromArgb(230, 255, 255, 255);
                 rc.DrawClippedRectangle(clippingRect, new OxyRect(pt.x -2 - size.Width/2, pt.Y - (clippingRect.Height / 2 > pt.Y?0:size.Height) -2, size.Width+4, size.Height+4), colour, colour, 1);
 
                 rc.DrawClippedText(

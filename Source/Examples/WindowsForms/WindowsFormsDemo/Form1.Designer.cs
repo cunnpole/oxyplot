@@ -39,6 +39,7 @@ namespace WindowsFormsDemo
             this.plot1 = new OxyPlot.WindowsForms.PlotView();
             this.cmdRedraw = new System.Windows.Forms.Button();
             this.cmdBloodGlucose = new System.Windows.Forms.Button();
+            this.cmdACR = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // plot1
@@ -78,11 +79,23 @@ namespace WindowsFormsDemo
             this.cmdBloodGlucose.UseVisualStyleBackColor = true;
             this.cmdBloodGlucose.Click += new System.EventHandler(this.cmdBloodGlucose_Click);
             // 
+            // cmdACR
+            // 
+            this.cmdACR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdACR.Location = new System.Drawing.Point(12, 171);
+            this.cmdACR.Name = "cmdACR";
+            this.cmdACR.Size = new System.Drawing.Size(142, 23);
+            this.cmdACR.TabIndex = 3;
+            this.cmdACR.Text = "ACR";
+            this.cmdACR.UseVisualStyleBackColor = true;
+            this.cmdACR.Click += new System.EventHandler(this.cmdACR_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 196);
+            this.Controls.Add(this.cmdACR);
             this.Controls.Add(this.cmdBloodGlucose);
             this.Controls.Add(this.cmdRedraw);
             this.Controls.Add(this.plot1);
@@ -99,5 +112,6 @@ namespace WindowsFormsDemo
         private PlotView plot1;
         private System.Windows.Forms.Button cmdRedraw;
         private System.Windows.Forms.Button cmdBloodGlucose;
+        private System.Windows.Forms.Button cmdACR;
     }
 }

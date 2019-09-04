@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+
 namespace OxyPlot
 {
     /// <summary>
@@ -27,7 +29,7 @@ namespace OxyPlot
             {
                 pixels = image.GetPixels();
             }
-            catch
+            catch (Exception ex) /* Gobble */
             {
                 // TODO: remove this try/catch block when image decoder is implemented.
                 return null;

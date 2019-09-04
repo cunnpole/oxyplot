@@ -15,6 +15,7 @@
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>OxyPlot.snk</AssemblyOriginatorKeyFile>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;Live Release;Live Debug</Configurations>
   </PropertyGroup>
 
 </Project>

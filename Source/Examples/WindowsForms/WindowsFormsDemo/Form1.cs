@@ -67,6 +67,7 @@ namespace WindowsFormsDemo
                 ShowColouredLines = true,
                 ColorLo = OxyColors.Green,
                 ColorLo2 = OxyColors.Green,
+
             };
             int i = 0;
             lineSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(new DateTime(2016,1,1).AddDays(18*i++)), 130) { MarkerColour = OxyPlot.Foundation.MarkerColor.Color2, ShowLabel = false });
@@ -249,5 +250,11 @@ namespace WindowsFormsDemo
             }
             PlotModel.Series.Add(lineSeries);
         }
+
+        private void cmdACR_Click(object sender, EventArgs e)
+        {
+            
+        }
+       
     }
 }

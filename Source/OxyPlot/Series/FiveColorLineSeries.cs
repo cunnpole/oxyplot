@@ -484,7 +484,7 @@ namespace OxyPlot.Series
                 var sectionBackColor = SectionBackColorAlpha < 255 ? OxyColor.FromAColor(SectionBackColorAlpha, this.GetSelectableColor(this.ActualColorHi)) : this.GetSelectableColor(this.ActualColorHi);
                 rc.DrawRectangle(clippy, sectionBackColor, sectionBackColor, 0);
             }
-            if (pointsToRender.Any(x => x.Y <= yHi && x.Y >= yHi2))
+            if (pointsToRender.Any(x => x.Y <= yHi) && pointsToRender.Any(x=>x.Y >= yHi2) || (pointsToRender.Any(x => x.Y >= yHi) && pointsToRender.Any(x => x.Y <= yHi2)))
             {
                 rc.DrawClippedLine(
                    clippingRect,
